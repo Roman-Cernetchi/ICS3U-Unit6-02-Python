@@ -2,32 +2,42 @@
 
 # Created by: Roman Cernetchi
 # Created on: January 2021
-# This program prints 10 random integers and finds the average
+# This program prints 10 random integers and finds the largest number
 
 import random
 
 
+def max_value(random_list):
+    # This function finds the largest number
+
+    max_num = random_list[0]
+
+    for loop_counter in range(0, len(random_list)):
+        if max_num >= random_list[loop_counter]:
+            continue
+        elif max_num < random_list[loop_counter]:
+            max_num = random_list[loop_counter]
+
+    return max_num
+
+
 def main():
-    # Generates 10 random numbers and finds average
+    # This function prints 10 random integers and output
 
-    random_numbers = []
+    random_list = []
 
-    addition = 0
-
+    # process
     for loop_counter in range(0, 10):
-        random_numbers.append(random.randint(1, 100))
+        # random number
+        random_number = random.randint(1, 100)
+        random_list.append(random_number)
+        print(random_number)
 
-        if loop_counter < 9:
-            print(random_numbers[loop_counter], end=" ")
-        else:
-            print(random_numbers[loop_counter])
+    # call function
+    largest_num = max_value(random_list)
 
-    for loop_counter in range(0, 10):
-        addition = addition + random_numbers[loop_counter]
-
-    average = addition / 10
-
-    print("Average = {}".format(average))
+    print("")
+    print("The largest number is: {0}".format(largest_num))
 
 
 if __name__ == "__main__":
